@@ -201,7 +201,11 @@ endif
 
 " Transparent Background
 if g:neodark#terminal_transparent == 1
-  let s:base1[1] = 'none' " This doesn't work well for airline
+  let s:base1T = ['none', 'none'] " This doesn't work well for airline
+  let s:base2T = ['none', 'none']
+else
+  let s:base1T = s:base1
+  let s:base2T = s:base2
 end
 
 " neovim terminal colors
@@ -255,27 +259,27 @@ call s:hi('CursorColumn',              '',              s:base2,         '')
 call s:hi('CursorLine',                '',              s:base2,         'none')
 call s:hi('CursorLineNr',              s:light_blue,    s:base2,         'none')
 call s:hi('Directory',                 s:blue,          '',              '')
-call s:hi('DiffAdd',                   s:green,         s:base2,         'none')
-call s:hi('DiffChange',                s:yellow,        s:base2,         'none')
-call s:hi('DiffDelete',                s:red,           s:base2,         'none')
-call s:hi('DiffText',                  s:blue,          s:base1,         'none')
-call s:hi('ErrorMsg',                  s:red,           s:base1,         'bold')
-call s:hi('FoldColumn',                s:base4,         s:base2,         '')
-call s:hi('Folded',                    s:base3,         s:base1,         '')
+call s:hi('DiffAdd',                   s:green,         s:base2T,        'none')
+call s:hi('DiffChange',                s:yellow,        s:base2T,        'none')
+call s:hi('DiffDelete',                s:red,           s:base2T,        'none')
+call s:hi('DiffText',                  s:blue,          s:base1T,        'none')
+call s:hi('ErrorMsg',                  s:red,           s:base1T,        'bold')
+call s:hi('FoldColumn',                s:base4,         s:base2T,        '')
+call s:hi('Folded',                    s:base3,         s:base1T,        '')
 call s:hi('Search',                    s:golden_yellow, s:base3,         'bold')
 call s:hi('LineNr',                    s:base3,         '',              '')
-call s:hi('MatchParen',                s:light_blue,    s:base1,         'underline,bold')
+call s:hi('MatchParen',                s:light_blue,    s:base1T,        'underline,bold')
 call s:hi('ModeMsg',                   s:green,         '',              '')
 call s:hi('MoreMsg',                   s:green,         '',              '')
 call s:hi('NonText',                   s:base4,         '',              'none')
-call s:hi('Normal',                    s:base5,         s:base1,         'none')
+call s:hi('Normal',                    s:base5,         s:base1T,        'none')
 call s:hi('Pmenu',                     s:base5,         s:base2,         '')
 call s:hi('PmenuSbar',                 '',              s:base2,         '')
 call s:hi('PmenuSel',                  s:base2,         s:green,         '')
 call s:hi('PmenuThumb',                '',              s:base4,         '')
 call s:hi('Question',                  s:blue,          '',              'none')
 call s:hi('IncSearch',                 s:golden_yellow, s:base1,         '')
-call s:hi('SignColumn',                s:base5,         s:base1,         '')
+call s:hi('SignColumn',                s:base5,         s:base1T,        '')
 call s:hi('SpecialKey',                s:base4,         '',              '')
 call s:hi('SpellBad',                  s:red,           s:base1,         'underline')
 call s:hi('SpellCap',                  s:brown,         s:base1,         'none')
@@ -283,19 +287,19 @@ call s:hi('SpellRare',                 s:brown,         s:base1,         'none')
 call s:hi('SpellLocal',                s:brown,         s:base1,         'none')
 call s:hi('StatusLine',                s:base5,         s:base3,         'none')
 call s:hi('StatusLineNC',              s:base2,         s:base4,         '')
-call s:hi('TabLine',                   s:base4,         s:base2,         'none')
-call s:hi('TabLineFill',               s:base4,         s:base2,         'none')
+call s:hi('TabLine',                   s:base4,         s:base2T,        'none')
+call s:hi('TabLineFill',               s:base4,         s:base2T,        'none')
 call s:hi('TabLineSel',                s:yellow,        s:base3,         'none')
 call s:hi('Title',                     s:orange,        '',              'none')
 call s:hi('Visual',                    s:base5,         s:base3,         '')
 call s:hi('WarningMsg',                s:red,           '',              '')
-call s:hi('WildMenu',                  s:base2,         s:green,	       '')
+call s:hi('WildMenu',                  s:base2,         s:green,         '')
 
 " Solid bar for vertical split
 if g:neodark#solid_vertsplit == 1
-  call s:hi('VertSplit',                 s:base2,      s:base2,    'none')
+  call s:hi('VertSplit',                 s:base2,      s:base2,     'none')
 else
-  call s:hi('VertSplit',                 s:base4,      s:base1,    'none')
+  call s:hi('VertSplit',                 s:base4,      s:base1T,    'none')
 endif
 
 " Standard Syntax
