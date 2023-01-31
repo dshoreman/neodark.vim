@@ -128,6 +128,11 @@ if !exists('g:neodark#terminal_transparent')
   let g:neodark#terminal_transparent = 0
 endif
 
+if !exists('g:neodark#solid_cursorline')
+  " Default to on for backwards-compat
+  let g:neodark#solid_cursorline = 1
+endif
+
 if !exists('g:neodark#solid_vertsplit')
   let g:neodark#solid_vertsplit = 0
 endif
@@ -233,7 +238,7 @@ let g:terminal_ansi_colors = [s:base1[0], s:red[0], s:green[0], s:yellow[0],
       \ s:blue[0], s:purple[0], s:orange[0], s:base4[0], s:base2[0], s:pink[0],
       \ s:teal[0], s:golden_yellow[0], s:light_blue[0], s:base3[0], s:brown[0], s:base5[0]]
 
-function! s:hi(group, fg, bg, attr)
+function! s:hi(group, fg, bg, attr, sp='')
   let l:attr = a:attr
   if g:neodark#italics == 0 && l:attr ==? 'italic'
     let l:attr = 'none'
@@ -250,14 +255,23 @@ function! s:hi(group, fg, bg, attr)
   if l:attr != ''
     exec 'hi ' . a:group . ' gui=' . l:attr . ' cterm=' . l:attr . ' guisp=NONE'
   endif
+
+  if !empty(a:sp)
+    exec 'hi ' . a:group . ' guisp=' . a:sp[0]
+  endif
 endfun
 
 " Vim Editor
 call s:hi('ColorColumn',               '',              s:base2,         '')
 call s:hi('Cursor',                    s:base2,         s:base5,         '')
 call s:hi('CursorColumn',              '',              s:base2,         '')
-call s:hi('CursorLine',                '',              s:base2,         'none')
-call s:hi('CursorLineNr',              s:light_blue,    s:base2,         'none')
+if g:neodark#solid_cursorline == 1
+  call s:hi('CursorLine',                '',            s:base2,         'none')
+  call s:hi('CursorLineNr',              s:light_blue,  s:base2,         'none')
+else
+  call s:hi('CursorLine',                '',            s:base2T,        'underline', s:base4)
+  call s:hi('CursorLineNr',              s:light_blue,  s:base2T,        'underline', s:base4)
+endif
 call s:hi('Directory',                 s:blue,          '',              '')
 call s:hi('DiffAdd',                   s:green,         s:base2T,        'none')
 call s:hi('DiffChange',                s:yellow,        s:base2T,        'none')

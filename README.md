@@ -22,6 +22,11 @@ If you want solid vertical split matching the statusline:
 let g:neodark#solid_vertsplit = 1 " default: 0
 ```
 
+To underline (rather than highlight) the cursorline:
+```vim
+let g:neodark#solid_cursorline = 0 " default: 1
+```
+
 To use *italics*:
  ```vim
  let g:neodark#italics = 1 " default: 0
