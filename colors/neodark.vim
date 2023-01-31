@@ -396,6 +396,9 @@ let g:indentLine_bgcolor_term = s:base1[1]
 hi link SignifySignAdd GitGutterAdd
 hi link SignifySignChange GitGutterChange
 hi link SignifySignDelete GitGutterDelete
+
+" Telescope
+call s:hi('TelescopeNormal', '', s:base2, '')
 " }}}
 
 set background=dark
