@@ -206,8 +206,8 @@ endif
 
 " Transparent Background
 if g:neodark#terminal_transparent == 1
-  let s:base1T = ['none', 'none'] " This doesn't work well for airline
-  let s:base2T = ['none', 'none']
+  let s:base1T = ['NONE', 'NONE'] " This doesn't work well for airline
+  let s:base2T = ['NONE', 'NONE']
 else
   let s:base1T = s:base1
   let s:base2T = s:base2
